@@ -1,7 +1,6 @@
 package com.antogeo.entity;
 
-import javax.persistence.Entity;
-import javax.persistence.Table;
+import javax.persistence.*;
 import java.util.Date;
 
 @Entity
@@ -10,14 +9,17 @@ public class Results {
 
     private long resultId;
     private int grade;
-    private long studentId;
-    private long classId;
+    private Student student;
+    private Course course;
     private Date creationDate;
 
 
     public Results() {
     }
 
+    @Id
+    @GeneratedValue
+    @Column(name="result_id")
     public long getResultId() {
         return resultId;
     }
@@ -26,6 +28,7 @@ public class Results {
         this.resultId = resultId;
     }
 
+    @Column(name="grade")
     public int getGrade() {
         return grade;
     }
@@ -34,22 +37,28 @@ public class Results {
         this.grade = grade;
     }
 
-    public long getStudentId() {
-        return studentId;
+    @ManyToOne
+    @JoinColumn(name="student_id")
+    public Student getStudent() {
+        return student;
     }
 
-    public void setStudentId(long studentId) {
-        this.studentId = studentId;
+    public void setStudent(Student student) {
+        this.student = student;
     }
 
-    public long getClassId() {
-        return classId;
+
+    @ManyToOne
+    @JoinColumn(name="class_id")
+    public Course getCourse() {
+        return course;
     }
 
-    public void setClassId(long classId) {
-        this.classId = classId;
+    public void setCourse(Course course) {
+        this.course = course;
     }
 
+    @Column(name="creation_date")
     public Date getCreationDate() {
         return creationDate;
     }

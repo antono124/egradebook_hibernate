@@ -1,19 +1,20 @@
 package com.antogeo.entity;
 
-import javax.persistence.Entity;
-import javax.persistence.Table;
+import org.hibernate.annotations.GenericGenerator;
+import org.hibernate.annotations.Parameter;
+
+import javax.persistence.*;
 
 @Entity
 @Table(name="student_info")
 public class StudentInfo {
 
     private long studentId;
+    private Student student;
     private String firstName;
     private String lastName;
     private String semester;
     private String address;
-    private String city;
-    private String country;
     private String phone1;
     private String phone2;
 
@@ -22,6 +23,12 @@ public class StudentInfo {
     }
 
 
+    @GenericGenerator(name = "gen",
+            strategy = "foreign",
+            parameters = @Parameter(name = "property", value = "student"))
+    @Id
+    @GeneratedValue(generator = "gen")
+    @Column(name = "student_id")
     public long getStudentId() {
         return studentId;
     }
@@ -30,6 +37,16 @@ public class StudentInfo {
         this.studentId = studentId;
     }
 
+    @OneToOne(fetch = FetchType.EAGER)
+    public Student getStudent() {
+        return student;
+    }
+
+    public void setStudent(Student student) {
+        this.student = student;
+    }
+
+    @Column(name="first_name")
     public String getFirstName() {
         return firstName;
     }
@@ -38,6 +55,7 @@ public class StudentInfo {
         this.firstName = firstName;
     }
 
+    @Column(name = "last_name")
     public String getLastName() {
         return lastName;
     }
@@ -46,6 +64,7 @@ public class StudentInfo {
         this.lastName = lastName;
     }
 
+    @Column(name = "semester")
     public String getSemester() {
         return semester;
     }
@@ -54,6 +73,7 @@ public class StudentInfo {
         this.semester = semester;
     }
 
+    @Column(name = "address")
     public String getAddress() {
         return address;
     }
@@ -62,22 +82,7 @@ public class StudentInfo {
         this.address = address;
     }
 
-    public String getCity() {
-        return city;
-    }
-
-    public void setCity(String city) {
-        this.city = city;
-    }
-
-    public String getCountry() {
-        return country;
-    }
-
-    public void setCountry(String country) {
-        this.country = country;
-    }
-
+    @Column(name = "phone_1")
     public String getPhone1() {
         return phone1;
     }
@@ -86,6 +91,7 @@ public class StudentInfo {
         this.phone1 = phone1;
     }
 
+    @Column(name = "phone_2")
     public String getPhone2() {
         return phone2;
     }

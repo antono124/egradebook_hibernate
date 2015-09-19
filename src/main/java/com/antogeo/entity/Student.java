@@ -1,8 +1,7 @@
 package com.antogeo.entity;
 
 
-import javax.persistence.Entity;
-import javax.persistence.Table;
+import javax.persistence.*;
 import javax.xml.transform.Result;
 import java.util.Date;
 import java.util.HashSet;
@@ -16,13 +15,17 @@ public class Student {
     private String username;
     private String password;
     private Date creationDate;
+    private StudentInfo studentInfo;
     private Set<Result> resultSet = new HashSet<>();
-    private Set<Class> classSet = new HashSet<>();
+    private Set<Course> courseSet = new HashSet<>();
 
 
     public Student() {
     }
 
+    @Id
+    @GeneratedValue
+    @Column(name="student_id")
     public long getStudentId() {
         return studentId;
     }
@@ -31,6 +34,7 @@ public class Student {
         this.studentId = studentId;
     }
 
+    @Column(name="username")
     public String getUsername() {
         return username;
     }
@@ -39,6 +43,7 @@ public class Student {
         this.username = username;
     }
 
+    @Column(name="password")
     public String getPassword() {
         return password;
     }
@@ -47,6 +52,7 @@ public class Student {
         this.password = password;
     }
 
+    @Column(name="creation_date")
     public Date getCreationDate() {
         return creationDate;
     }
@@ -55,6 +61,16 @@ public class Student {
         this.creationDate = creationDate;
     }
 
+    @OneToOne(fetch = FetchType.EAGER, mappedBy = "student", cascade = CascadeType.ALL)
+    public StudentInfo getStudentInfo() {
+        return studentInfo;
+    }
+
+    public void setStudentInfo(StudentInfo studentInfo) {
+        this.studentInfo = studentInfo;
+    }
+
+    @OneToMany(fetch = FetchType.EAGER)
     public Set<Result> getResultSet() {
         return resultSet;
     }
@@ -63,11 +79,12 @@ public class Student {
         this.resultSet = resultSet;
     }
 
-    public Set<Class> getClassSet() {
-        return classSet;
+    @ManyToMany(fetch = FetchType.LAZY, mappedBy = "students")
+    public Set<Course> getCourseSet() {
+        return courseSet;
     }
 
-    public void setClassSet(Set<Class> classSet) {
-        this.classSet = classSet;
+    public void setCourseSet(Set<Course> courseSet) {
+        this.courseSet = courseSet;
     }
 }
