@@ -5,7 +5,7 @@ import java.util.Date;
 
 @Entity
 @Table(name = "results")
-public class Results {
+public class Result {
 
     private long resultId;
     private int grade;
@@ -14,7 +14,7 @@ public class Results {
     private Date creationDate;
 
 
-    public Results() {
+    public Result() {
     }
 
     @Id

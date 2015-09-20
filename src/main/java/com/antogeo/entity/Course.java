@@ -13,7 +13,7 @@ public class Course {
     private String description;
     private String semester;
     private Set<Student> students = new HashSet<>();
-    private Set<Results> results = new HashSet<>();
+    private Set<Result> results = new HashSet<>();
 
     public Course() {
     }
@@ -69,11 +69,11 @@ public class Course {
     }
 
     @OneToMany(fetch = FetchType.LAZY, mappedBy = "class")
-    public Set<Results> getResults() {
+    public Set<Result> getResults() {
         return results;
     }
 
-    public void setResults(Set<Results> results) {
+    public void setResults(Set<Result> results) {
         this.results = results;
     }
 }
