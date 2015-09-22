@@ -18,6 +18,14 @@ public class Course {
     public Course() {
     }
 
+    public Course(String name,
+                  String description,
+                  String semester) {
+        this.name = name;
+        this.description = description;
+        this.semester = semester;
+    }
+
     @Id
     @GeneratedValue
     @Column(name="class_id")

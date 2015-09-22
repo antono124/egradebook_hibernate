@@ -23,6 +23,14 @@ public class Student {
     public Student() {
     }
 
+    public Student(String username,
+                   String password,
+                   Date creationDate) {
+        this.username = username;
+        this.password = password;
+        this.creationDate = creationDate;
+    }
+
     @Id
     @GeneratedValue
     @Column(name="student_id")

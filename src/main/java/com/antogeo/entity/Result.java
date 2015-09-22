@@ -17,6 +17,12 @@ public class Result {
     public Result() {
     }
 
+    public Result(Student student,
+                  Course course) {
+        this.student = student;
+        this.course = course;
+    }
+
     @Id
     @GeneratedValue
     @Column(name="result_id")
