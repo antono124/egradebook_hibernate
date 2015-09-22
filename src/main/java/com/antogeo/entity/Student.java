@@ -2,7 +2,6 @@ package com.antogeo.entity;
 
 
 import javax.persistence.*;
-import javax.xml.transform.Result;
 import java.util.Date;
 import java.util.HashSet;
 import java.util.Set;
@@ -78,7 +77,7 @@ public class Student {
         this.studentInfo = studentInfo;
     }
 
-    @OneToMany(fetch = FetchType.EAGER)
+    @OneToMany(fetch = FetchType.EAGER, mappedBy = "student")
     public Set<Result> getResultSet() {
         return resultSet;
     }

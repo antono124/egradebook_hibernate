@@ -29,12 +29,12 @@ public class CourseDao extends AbstractDao {
 
     @Override
     public List<Course> getObjectsByStudentId(long studentId) {
-        return (List<Course>) hu.selectListById("Course", "student", studentId);
+        return (List<Course>) hu.selectListById("Course", "students", studentId);
     }
 
     @Override
     public Course getObjectById(long objectId) {
-        return (Course) hu.selectById("Course", "student", objectId);
+        return (Course) hu.selectById("Course", "courseId", objectId);
     }
 
     @Override

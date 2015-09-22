@@ -76,7 +76,7 @@ public class Course {
         this.students = students;
     }
 
-    @OneToMany(fetch = FetchType.LAZY, mappedBy = "class")
+    @OneToMany(fetch = FetchType.LAZY, mappedBy = "course")
     public Set<Result> getResults() {
         return results;
     }

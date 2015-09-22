@@ -1,6 +1,7 @@
 package com.antogeo.service;
 
 import com.antogeo.dao.StudentDao;
+import com.antogeo.entity.Course;
 import com.antogeo.entity.Student;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -15,6 +16,9 @@ public class StudentService extends AbstractService {
 
     @Autowired
     private StudentDao  studentDao;
+
+    @Autowired
+    private CourseService courseService;
 
     @Override
     @Transactional(readOnly = true)
