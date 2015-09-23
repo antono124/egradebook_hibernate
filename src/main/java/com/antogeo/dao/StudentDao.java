@@ -14,11 +14,6 @@ public class StudentDao extends AbstractDao {
     private HibernateUtil hu;
 
     @Override
-    public List<Student> getAll() {
-        return null;
-    }
-
-    @Override
     public Student insert(Object o) {
         return (Student) hu.insert(o);
     }

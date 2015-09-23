@@ -13,11 +13,6 @@ public class CourseDao extends AbstractDao {
     private HibernateUtil hu;
 
     @Override
-    public List getAll() {
-        return null;
-    }
-
-    @Override
     public Course insert(Object o) {
         return (Course) hu.insert(o);
     }

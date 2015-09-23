@@ -5,8 +5,6 @@ import java.util.List;
 
 public abstract class AbstractDao<T> {
 
-    public abstract List<T> getAll();
-
     public abstract T insert(Object o);
 
     public abstract T update(Object o);

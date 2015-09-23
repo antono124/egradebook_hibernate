@@ -21,13 +21,6 @@ public class StudentService extends AbstractService {
     private CourseService courseService;
 
     @Override
-    @Transactional(readOnly = true)
-    public List<Student> getAll() {
-
-        return null;
-    }
-
-    @Override
     @Transactional
     public Student insert(Object o) {
 

@@ -18,12 +18,6 @@ public class ResultService extends AbstractService {
     private ResultDao resultDao;
 
     @Override
-    @Transactional(readOnly = true)
-    public List<Result> getAll() {
-        return null;
-    }
-
-    @Override
     @Transactional
     public Result insert(Object o) {
 

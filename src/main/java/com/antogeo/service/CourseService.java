@@ -18,12 +18,6 @@ public class CourseService extends AbstractService{
     private CourseDao courseDao;
 
     @Override
-    @Transactional(readOnly = true)
-    public List<Course> getAll() {
-        return null;
-    }
-
-    @Override
     @Transactional
     public Course insert(Object o) {
         return courseDao.insert(o);
